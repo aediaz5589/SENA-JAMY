@@ -57,10 +57,10 @@
                 </div>
 
                 <div class="col-md-6">
-                 < <center>
+                <center>
   <form method="POST" action="validardom.php">
-    <label>Usuario</label>
-    <input type="text" name="Username" placeholder="Escriba su Usuario"><br/><br/>
+    <label>Numero de identificacion</label>
+    <input type="text" name="IDpersonal" placeholder="Escriba su numero de identificacion"><br/><br/>
     <label>Contraseña </label>
     <input type="password" name="Password" placeholder="Escriba su contraseña"><br/><br/>
     <input type="submit" name="insert" value="INGRESAR"><br/><br/>

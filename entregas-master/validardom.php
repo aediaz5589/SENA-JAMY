@@ -1,11 +1,11 @@
 <?php
 session_start();
-$Username=$_POST['Username'];
+$IDpersonal=$_POST['IDpersonal'];
 $password=$_POST['Password'];
 $con=mysqli_connect("localhost","root","","jamy") or die ("ERROR DE CONEXIÓN");
 
-$_SESSION['Username']=$Username;
-$consulta="SELECT * FROM `tbl_customers` WHERE `Username` = '".$Username."' and `Password` = '".$password."'";
+$_SESSION['IDpersonal']=$IDpersonal;
+$consulta="SELECT * FROM `personal` WHERE `IDpersonal` = '".$IDpersonal."' and `Password` = '".$password."'";
 
 $resultado=mysqli_query ($con, $consulta);
 

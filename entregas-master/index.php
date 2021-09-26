@@ -140,7 +140,7 @@ include_once "modelos/ConstantesConexion.php";
 					<?php if($Username == null){echo '<a href="Login.php?Role=User">Ingresar</a>';} else {echo '<a href="Logout.php">salir</a>';} ?> | 
 					<a href="#">Volver al inicio</a>
 					</strong><br>
-					floristeria mi gran sueño &copy; 
+					FLORISTERIA MI GRAN SUEÑO &copy; 
 					</p>
 					
                 </div>

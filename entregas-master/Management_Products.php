@@ -99,8 +99,18 @@
 							</div>
 
 							<div class="form-group">
-								<label for="ProductImage">Imagen de Producto:</label>
-								<input type="file" name="ProductImage">
+								<label for="ProductImageName">Imagen de Producto:</label required>
+								<input type="file" name="ProductImageName">
+							</div>
+
+							<div class="form-group">
+								<label for="ProductImage">Nombre de la imagen:</label required>
+								<input type="text" name="ProductImage">
+							</div>
+
+							<div class="form-group">  <h3>Estado del producto:</h1>
+							<input for="proEstado" type="radio" name="proEstado" value="1">ACTIVO<br>
+							<input for="proEstado" type="radio" name="proEstado" value="2" checked>INACTIVO
 							</div>
 
 

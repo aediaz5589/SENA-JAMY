@@ -72,7 +72,9 @@ include_once "modelos/ConstantesConexion.php";
 									<td>Cantidad</td>
 									<td>Precio</td>
 									<td>Categoria</td>
+									<td>Imagen</td>
 									<td>Nombre imagen</td>
+									<td>Estado del producto</td>
 									<td>Acción</td>
 
 								</tr>
@@ -91,6 +93,8 @@ include_once "modelos/ConstantesConexion.php";
 									<td><?php echo $Rows[3]; ?></td>
 									<td><?php echo $Rows[4]; ?></td>
 									<td><?php echo $Rows[5]; ?></td>
+									<td><?php echo $Rows[6]; ?></td>
+									<td><?php echo $Rows[7]; ?></td>
 
 									<td>
 									<a href="#" onclick="ProductOnlick('Edit',<?php echo $Rows[0]; ?>)">Editar</a> | 

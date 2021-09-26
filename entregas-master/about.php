@@ -80,10 +80,10 @@
                 </div>
                 <div class="col-md-10" align=left-aling> 
                     <h1 style="color: black" > ¿Quienes somos?</h1>
-                    <p> Empresa dedicada a la entrega de arreglos florales a domicilio, contamos con un centro de distribución en donde se puede adquirir de forma presencial nuestro producto</p> <br><br><br><br>
-                    <p> </p> 
+                    <p> Empresa dedicada a la entrega de arreglos florales a domicilio, contamos con un centro de distribución en donde se puede adquirir de forma presencial nuestro producto</p> <br> 
                 </div>
-                <div class="clearfix"></div>
+
+                </div>
             </div>
         </div>
 
