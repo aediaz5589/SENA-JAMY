@@ -98,16 +98,11 @@ include_once "modelos/ConstantesConexion.php";
                 </div>
             </div>
         </div>
-		
-		<?php 
-			$conn = mysqli_connect("localhost","root","","jamy");
-			$sql = "SELECT * FROM `tbl_products` Limit 10";
-			$Resulta = mysqli_query($conn,$sql);
-		
-	  
-
+        <?php 
+            $conn = mysqli_connect("localhost","root","","jamy");
+            $sql = "SELECT * FROM `tbl_products` Limit 10";
+            $Resulta = mysqli_query($conn,$sql);
 ?>
-
 		<?php while($Rows = mysqli_fetch_array($Resulta)){
  
 		#echo "<pre>"; 

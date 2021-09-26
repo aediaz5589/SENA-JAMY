@@ -67,6 +67,12 @@ class productos extends ConBdMySql {
 
     }
 
+    $sql = "DELETE FROM `tbl_products` WHERE ProductID = " . $ProductID;
+    $res = mysqli_query($Conn,$sql);
+    if($res)
+    {
+        echo '<script>window.open("Management_Products.php","_self",null,true)</script>';
+    }
 }
 }
 

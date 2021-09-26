@@ -124,18 +124,17 @@
 						<div class="table-responsive">
 							<table border="5px" class="table">
 								<tr style="text-align: center; color: Black; font-weight: bold;">
-										<td>ID de Orden</td>
-									<td>Producto ID</td>
+									<td>ID de Orden</td>
+									<td>Categoria del producto</td>
 									<td>Cantidad</td>
 									<td>Color</td>
-									<td>Fecha de orden</td>
-									<td>Factura</td>
+									<td>Precio del producto</td>
+									<td>Fecha del producto</td>
 									<td>Acción</td>
 								</tr>
 								
 								<?php 
-								$sqlI = "SELECT OrderID, ProductID,  Size, Color, DateOrdered, factura_CodigoFactura " .
-								"FROM tbl_orders ";
+								$sqlI = "SELECT tbl_orders.OrderID, tbl_products.Productname, tbl_orders.Size, tbl_orders.Color, tbl_products.ProductPrice, tbl_orders.DateOrdered FROM tbl_products RIGHT JOIN  tbl_orders on tbl_orders.ProductID = tbl_products.ProductID WHERE tbl_orders.CustomerID = $C_ID ORDER BY tbl_orders.OrderID";
 								$Resulta = mysqli_query($Conn,$sqlI);
 								while($Rows = mysqli_fetch_array($Resulta)):; 
 								?>
@@ -176,7 +175,7 @@
 	<script>
 		function OrderOnclick(OrderID)
 		{
-			if(confirm("Are you sure you want to cancel this order?") == true)
+			if(confirm("Esta seguro de cancelar esta orden?") == true)
 			{
 				window.open("ManageAccountAction.php?oID="+OrderID,"_self",null,true);
 			}

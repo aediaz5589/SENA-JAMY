@@ -89,12 +89,16 @@
 				
 					<div class="form-group">
 						<label for="ProductColor">Color:</label>
-						<input type="text" name="ProductColor" class="form-control" id="ProductColor">
+						<input type="text" name="ProductColor" class="form-control" id="ProductColor" placeholder="Ingrese el Color de la silueta" required="">
 					</div>
 					<div class="form-group">
 						<label for="ProductSize">Cantidad:</label>
-						<input type="text" name="ProductSize" class="form-control" id="ProductSize">
+						<input type="text" name="ProductSize" class="form-control" id="ProductSize" placeholder="Ingrese la cantidad" required="">
 					</div>
+                    <div class="form-group">
+                        <label for="ProductSize">Fecha de entrega:</label>
+                        <input type="date" name="FechaEntrega" class="form-control" id="FechaEntrega" placeholder="Ingrese la fecha de entrega" required="">
+                    </div>
 						<button type="submit" style="float: right;" class="btn btn-default">Enviar</button>
 					</form>
 				</div>

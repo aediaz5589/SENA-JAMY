@@ -63,19 +63,22 @@
 							<table border="5px" class="table">
 								<tr style="text-align: center; color: Black; font-weight: bold;">
 									<td>ID de Orden</td>
-									<td>Producto ID</td>
+									<td>ID del cliente</td>
+									<td>Nombre del producto</td>
 									<td>Cantidad</td>
 									<td>Color</td>
+									<td>Categoria</td>
+									<td>Precio</td>
 									<td>Fecha de orden</td>
-									<td>Factura</td>
+									<td>Fecha de entrega</td>
 									<td>Acción</td>
 								</tr>
 								
 								<?php 
 								require 'Connection.php';
-								$sqlI = "SELECT OrderID, ProductID,  Size, Color, DateOrdered, factura_CodigoFactura FROM tbl_orders ";
+							    $sqlI = "SELECT tbl_orders.OrderID, tbl_orders.CustomerID, tbl_products.Productname,tbl_orders.Size, tbl_orders.Color, tbl_products.ProductCategory, tbl_products.ProductPrice, tbl_orders.DateOrdered, tbl_orders.FechaEntrega FROM tbl_products RIGHT JOIN tbl_orders on tbl_orders.ProductID = tbl_products.ProductID ORDER BY tbl_orders.OrderID";
 								$Resulta = mysqli_query($Conn,$sqlI);
-								while($Rows = mysqli_fetch_array($Resulta)):; 
+								while($Rows = mysqli_fetch_array($Resulta)):;
 								?>
 								<tr style="color: black">	
 								<td><?php echo $Rows[0]; ?></td>
@@ -84,6 +87,9 @@
 								<td><?php echo $Rows[3]; ?></td>
 								<td><?php echo $Rows[4]; ?></td>
 								<td><?php echo $Rows[5]; ?></td>
+								<td><?php echo $Rows[6]; ?></td>
+								<td><?php echo $Rows[7]; ?></td>
+								<td><?php echo $Rows[8]; ?></td>
 
 
 								<td>
@@ -116,7 +122,7 @@
 	<script>
 		function CancelOrderOnclick(ID)
 		{
-			if(confirm("Are you sure you want to Delete this order?")==true)
+			if(confirm("Esta seguro que quiere eliminar esta orden?")==true)
 			{
 				window.open("Management_Orders_Action.php?id="+ID,"",null,true);
 			}

@@ -1,15 +1,9 @@
 <?php
-	session_start();
-	$conn = mysqli_connect("localhost","root","","jamy");
-		if(!$conn)
-			{
-				die("Connection Failed" . mysqli_connect_error());
-			}
-	$_un = $_POST['Username'];
-	$_pass = $_POST['Password'];
-	$_Role = $_GET['Role'];
-	
-		$query = "SELECT * FROM `tbl_customers` WHERE `Username` = '".$_un."' and `Password` = '".$_pass."' and `Role` = '".$_Role."'";
+$ usuario = getUser ();
+$ contraseña = getPassword (); // Cumple
+
+$ httpUrl = "https: //example.domain? user = $ user & password = $ password" // Cumple
+$ sshUrl = "ssh: // $ usuario: $password@example.domain" // Cumple
 		$res = mysqli_query($conn,$query);
 			if($res===false)
 				{
