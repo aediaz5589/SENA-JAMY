@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-09-2021 a las 15:14:48
+-- Tiempo de generación: 26-09-2021 a las 22:46:52
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -402,11 +402,11 @@ CREATE TABLE `tbl_customers` (
 
 INSERT INTO `tbl_customers` (`CustomerID`, `Username`, `PASSWORD`, `Role`, `Firstname`, `Middlename`, `Lastname`, `Address`, `EmailAddress`, `tbl_customersUsuSesion`, `tbl_customers_created_at`, `tbl_customers_updated_at`, `custEstado`) VALUES
 (1000128655, 'Alvareto', 'Alvarijua89', 'ADMIN', 'Alvaro', 'Esteban', 'Diaz', 'calle 22 C no.25-37', 'aediaz5589@gmail.com', NULL, '2021-04-22 03:54:37', '2021-04-25 22:33:26', 'ACTIVO'),
-(1000128765, 'Danilo', 'Danilo123', 'User', 'Danilo', NULL, 'Rocha', 'kr 22 a no. 67-89 ', 'drocha733@misena.edu.co', NULL, '2021-04-25 22:02:32', '2021-09-16 00:29:29', 'ACTIVO'),
+(1000128765, 'martha', '1003', 'User', 'Martha', 'Moreno', 'Vargas', 'samper mendoza', 'aediaz5589@gmail.com', NULL, '2021-04-25 22:02:32', '2021-09-26 20:23:14', 'ACTIVO'),
 (1000134655, 'Martha', '1003', 'User', 'Martha', NULL, 'Vargas', 'calle 22 C no.25-37', 'martha.1@gmail.com', NULL, '2021-04-25 22:05:32', '2021-09-16 00:29:33', 'ACTIVO'),
 (1000143664, 'Yefry', 'yefry123', 'ADMIN', 'Yefry', 'Mauricio', 'Narvaez', NULL, 'yefrynarvaez@gmail.com', NULL, '2021-04-27 16:06:55', '2021-06-09 16:15:26', 'ACTIVO'),
 (1001065403, 'valbuena', '12345', 'User', 'Laura', 'Dayana', 'Valbuena', 'calle 102 b sur 6a no.19', 'lauradvc.48@gmail.com', NULL, '2021-04-22 03:54:37', '2021-09-16 00:29:37', 'ACTIVO'),
-(1001065408, 'DANIELA', '123', 'User', 'daniela', 'diaz', 'moreno', 'calle 22c no.25-37', '23123@dasdasd', NULL, '2021-09-16 00:38:17', '2021-09-16 00:38:17', NULL);
+(1001065409, 'Alvaro', '12345', 'User', 'Esteban', 'Diaz', 'Moreno', 'calle 22c no.25-37', 'prueba@gmail.com', NULL, '2021-09-26 20:24:00', '2021-09-26 20:24:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -417,23 +417,19 @@ INSERT INTO `tbl_customers` (`CustomerID`, `Username`, `PASSWORD`, `Role`, `Firs
 CREATE TABLE `tbl_orders` (
   `OrderID` int(11) NOT NULL,
   `ProductID` int(11) DEFAULT NULL,
+  `CustomerID` int(11) DEFAULT NULL,
   `Size` varchar(30) DEFAULT NULL,
   `Color` varchar(30) DEFAULT NULL,
-  `DateOrdered` date DEFAULT NULL,
-  `factura_CodigoFactura` int(10) NOT NULL,
-  `ord_created_at` timestamp NULL DEFAULT current_timestamp(),
-  `ord_updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `ordEstado` set('ACTIVO','INACTIVO') DEFAULT NULL
+  `DateOrdered` varchar(30) DEFAULT NULL,
+  `FechaEntrega` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_orders`
 --
 
-INSERT INTO `tbl_orders` (`OrderID`, `ProductID`, `Size`, `Color`, `DateOrdered`, `factura_CodigoFactura`, `ord_created_at`, `ord_updated_at`, `ordEstado`) VALUES
-(2, 2, '2', 'Rosa', '2021-04-21', 2, '2021-04-21 22:27:24', '2021-04-22 22:27:24', 'INACTIVO'),
-(3, 3, '1', 'Amarillo', '2021-04-30', 3, '2021-04-25 22:28:58', '2021-04-25 22:28:58', 'ACTIVO'),
-(4, 4, '1', 'Azul', '2021-04-29', 4, '2021-04-25 22:29:44', '2021-04-25 22:29:44', 'ACTIVO');
+INSERT INTO `tbl_orders` (`OrderID`, `ProductID`, `CustomerID`, `Size`, `Color`, `DateOrdered`, `FechaEntrega`) VALUES
+(1, 2, 1000134655, '1', 'amariillo', '2021/09/26', '2021-09-26');
 
 -- --------------------------------------------------------
 
@@ -608,9 +604,7 @@ ALTER TABLE `tbl_customers`
 -- Indices de la tabla `tbl_orders`
 --
 ALTER TABLE `tbl_orders`
-  ADD PRIMARY KEY (`OrderID`,`factura_CodigoFactura`),
-  ADD KEY `ProductID` (`ProductID`),
-  ADD KEY `fk_tbl_orders_factura1_idx` (`factura_CodigoFactura`);
+  ADD PRIMARY KEY (`OrderID`);
 
 --
 -- Indices de la tabla `tbl_products`
@@ -664,13 +658,13 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `tbl_customers`
 --
 ALTER TABLE `tbl_customers`
-  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001065409;
+  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001065410;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_orders`
 --
 ALTER TABLE `tbl_orders`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_products`
@@ -718,13 +712,6 @@ ALTER TABLE `libros`
 --
 ALTER TABLE `persona`
   ADD CONSTRAINT `fk_persona_usuario_s1` FOREIGN KEY (`usuario_s_usuId`) REFERENCES `usuario_s` (`usuId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `tbl_orders`
---
-ALTER TABLE `tbl_orders`
-  ADD CONSTRAINT `fk_tbl_orders_factura1` FOREIGN KEY (`factura_CodigoFactura`) REFERENCES `factura` (`CodigoFactura`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tbl_orders_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `tbl_products` (`ProductID`);
 
 --
 -- Filtros para la tabla `usuario_s_roles`
